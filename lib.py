@@ -21,7 +21,7 @@ def avg_pressure(start, end):
 
 def depth_to_ata(depth):
     '''returns the pressure in ATA given a depth in meters'''
-    return (depth / 10) + 1
+    return (depth / 10.0) + 1.0
 
 def ascent_time(depth, change=NX_50_DEPTH, ascent_speed=DECO_ASCENT_SPEED):
     '''returns the time in minutes necessary to get to the first gas change.
@@ -38,6 +38,10 @@ def minutes_to_gas_change(depth, change=NX_50_DEPTH):
     total_time = 1 + ascent_time(depth, change=change) + 1
     return total_time
 
-def liters_to_bars(liters, bottle_size):
+def liters_to_bars(liters, bottle_size, round=False):
     '''returns the bars corresponding to a given volume in a given bottle_size in liters'''
-    return math.ceil(liters / bottle_size)
+    if round:
+        return math.ceil(liters / bottle_size)
+    else:
+        return liters / bottle_size
+
