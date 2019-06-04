@@ -2,9 +2,11 @@
 import sys
 import math
 
+# TODO: add check for python 3 to avoid numbers HORRENDOUS ERRORS
+
 from lib import *
 
-def minimum_gas(depth, bottle_size, change=21, sac=20, ascent_speed=3):
+def minimum_gas(depth, bottle_size, change=NX_50_DEPTH, sac=DEFAULT_BOTTOM_SAC, ascent_speed=DECO_ASCENT_SPEED):
     '''returns the amount in bar for a given bottle size for two divers ascending at a given ascent speed
     from a given depth in meters, using a given bottle_size in liters to a given gas change depth using a 
     given SAC
