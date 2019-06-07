@@ -71,6 +71,13 @@ def minutes_to_gas_change(depth, change=NX_50_DEPTH):
     total_time = 1 + ascent_time(depth, change=change) + 1
     return total_time
 
+def bottle_duration(consumption, pressure, empty_pressure=0):
+    '''returns the duration in minutes of bottle when used with a consumption rate in
+    bars/minute, starting at a given pressure (bars) and being considered empty at a
+    given pressure (bars)'''
+    available = pressure - empty_pressure
+    return math.floor(available / consumption)
+
 def liters_to_bars(liters, bottle_size, round=False):
     '''returns the bars corresponding to a given volume in a given bottle_size in liters'''
     if round:
