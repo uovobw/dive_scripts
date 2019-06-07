@@ -15,6 +15,39 @@ DEFAULT_DYNAMIC_SAC = 30
 DEFAULT_BOTTOM_SAC = 20
 DEFAULT_DECO_SAC = 15
 
+def ead(o2, depth):
+    '''returns the equivalent air depth for a given nitrox mix'''
+    fraction_o2 = percentage_to_fraction(o2)
+    fraction_n2 = 1.0 - fraction_o2
+    return math.ceil(((depth + 10.0) * (fraction_n2 / 0.79)) - 10.0)
+
+def end(o2, he, depth):
+    '''returns the END of a gas given in standard form (like 18/45)'''
+    fraction_he = percentage_to_fraction(he)
+    return math.ceil(((depth + 10.0) * (1.0 - fraction_he)) - 10.0) 
+    
+def narcotic_fraction(o2, he):
+    '''returns the narcotic fraction of a given trimix gas in standard form (like 18/45)'''
+    fraction_o2 = percentage_to_fraction(o2)
+    fraction_he = percentage_to_fraction(he)
+    narcotic = 1.0 - fraction_o2
+    return narcotic
+
+def partial_pressure(percentage, depth):
+    '''returns the partial pressure of a given percentage of a gas
+    at a given depth'''
+    ata = depth_to_ata(depth)
+    fraction = percentage_to_fraction(percentage)
+    return round(ata * fraction, 2)
+
+def percentage_to_fraction(percentage):
+    '''returns the fraction (0.0-1.0) given a percentage of gas (0-100)'''
+    return float(percentage / 100.0)
+
+def fraction_to_percentage(fraction):
+    '''returns the percentage (0-100) given a fraction of gas (0.0-1.0)'''
+    return fraction * 100.0
+    
 def avg_pressure(start, end):
     '''returns average pressure from ATAstart to ATAend'''
     return round((start + end) / 2, 1)
