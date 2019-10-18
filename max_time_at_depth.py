@@ -5,29 +5,9 @@ from pprint import pprint
 
 from lib import *
 
-bottles = []
-
-def get_bottles():
-    more = True
-    while more:
-        bottle_type = input("Bottle type? {}: ".format([x for x in BOTTLES.keys()]))
-        if bottle_type not in BOTTLES.keys():
-            print("Invalid or unknown bottle. Available ones are: {}".format([x for x in BOTTLES.keys()]))
-            continue
-        bottle_pressure = int(input("Bottle pressure for {}: ".format(bottle_type)))
-        reserve = float(input("Reserve in bars: "))
-        bottles.append({
-            "type": bottle_type,
-            "pressure": bottle_pressure,
-            "reserve": reserve
-        })
-        cont = input("Add another bottle? (only 'y' will continue)")
-        if cont != "y":
-            more = False
-
 if __name__ == "__main__":
     print("Calculating Maximum time ad depth for bottles")
-    get_bottles()
+    bottles = get_bottles(BOTTLES)
     pprint(bottles)
     depth = int(input("Depth of bottom segment (meters): "))
     ata = depth_to_ata(depth)

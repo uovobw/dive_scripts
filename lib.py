@@ -68,6 +68,7 @@ BOTTLES = {
 MIN_MIN_GAS = 40
 
 NX_50_DEPTH = 21
+OXYGEN_DEPTH = 6
 
 WORK_ASCENT_SPEED = 9
 DECO_ASCENT_SPEED = 3
@@ -157,3 +158,24 @@ def consumption_per_minute(depth, bottle_size, sac=DEFAULT_BOTTOM_SAC):
     bars = liters_to_bars(liters_per_minute, bottle_size)
     print("Depth: {}\nATA@Depth: {}\nLiters per minute @{}l/m {}\nBars/minute of bottle {}: {:.1f}".format(depth, ata, sac, liters_per_minute, bottle_size, bars))
     return bars
+
+def get_bottles(available):
+    bottles = []
+    more = True
+    while more:
+        bottle_type = input("Bottle type? {}: ".format([x for x in available.keys()]))
+        if bottle_type not in available.keys():
+            print("Invalid or unknown bottle. Available ones are: {}".format([x for x in available.keys()]))
+            continue
+        bottle_pressure = int(input("Bottle pressure for {}: ".format(bottle_type)))
+        reserve = float(input("Reserve in bars: "))
+        bottles.append({
+            "type": bottle_type,
+            "pressure": bottle_pressure,
+            "reserve": reserve
+        })
+        cont = input("Add another bottle? (only 'y' will continue)")
+        if cont != "y":
+            more = False
+    return bottles
+
