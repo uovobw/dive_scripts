@@ -4,14 +4,6 @@ import math
 
 from lib import *
 
-def consumption_per_minute(depth, bottle_size, sac=DEFAULT_BOTTOM_SAC):
-    sac = float(sac)
-    ata = depth_to_ata(depth)
-    liters_per_minute = ata * sac
-    bars = liters_to_bars(liters_per_minute, bottle_size)
-    print("Depth: {}\nATA@Depth: {}\nLiters per minute @{}l/m {}\nBars of bottle {}: {:.1f}".format(depth, ata, sac, liters_per_minute, bottle_size, bars))
-    return bars
-
 if __name__ == "__main__":
     print("Calculating Gas Consumption")
     if len(sys.argv) != 1:

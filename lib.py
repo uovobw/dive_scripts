@@ -2,6 +2,69 @@
 import sys
 import math
 
+BOTTLES = {
+    "d20": {
+        "max_pressure": 232,
+        "fill_pressure": 210,
+        "volume": 40.0,
+        "bottom": True
+    },
+    "d18": {
+        "max_pressure": 232,
+        "fill_pressure": 210,
+        "volume": 36.0,
+        "bottom": True
+    },
+    "d16": {
+        "max_pressure": 232,
+        "fill_pressure": 210,
+        "volume": 32.0,
+        "bottom": True
+    },
+    "d15": {
+        "max_pressure": 232,
+        "fill_pressure": 210,
+        "volume": 30.0,
+        "bottom": True
+    },
+    "d12": {
+        "max_pressure": 232,
+        "fill_pressure": 210,
+        "volume": 24.0,
+        "bottom": True
+    },
+    "d10": {
+        "max_pressure": 232,
+        "fill_pressure": 210,
+        "volume": 20.0,
+        "bottom": True
+    },
+    "d8.5": {
+        "max_pressure": 232,
+        "fill_pressure": 210,
+        "volume": 17.0,
+        "bottom": True
+    },
+    "7l": {
+        "max_pressure": 200,
+        "fill_pressure": 190,
+        "volume": 7.0,
+        "bottom": False
+    },
+    "s80": {
+        "max_pressure": 200,
+        "fill_pressure": 190,
+        "volume": 11.1,
+        "bottom": False
+    },
+    "s40": {
+        "max_pressure": 200,
+        "fill_pressure": 180,
+        "volume": 5.7,
+        "bottom": False
+    }
+}
+
 MIN_MIN_GAS = 40
 
 NX_50_DEPTH = 21
@@ -68,7 +131,7 @@ def total_volume(bottle_size, pressure=DEFAULT_BOTTLE_PRESSURE):
 
 def minutes_to_gas_change(depth, change=NX_50_DEPTH):
     '''returns the total minutes necessary to calculate minimum gas between two depths'''
-    total_time = 1 + ascent_time(depth, change=change) + 1
+    total_time = 1 + ascent_time(depth, change=change)
     return total_time
 
 def bottle_duration(consumption, pressure, empty_pressure=0):
@@ -85,3 +148,12 @@ def liters_to_bars(liters, bottle_size, round=False):
     else:
         return liters / bottle_size
 
+def consumption_per_minute(depth, bottle_size, sac=DEFAULT_BOTTOM_SAC):
+    '''returns the consumption in bars/minute of a bottle of a given size for
+    a given SAC'''
+    sac = float(sac)
+    ata = depth_to_ata(depth)
+    liters_per_minute = ata * sac
+    bars = liters_to_bars(liters_per_minute, bottle_size)
+    print("Depth: {}\nATA@Depth: {}\nLiters per minute @{}l/m {}\nBars/minute of bottle {}: {:.1f}".format(depth, ata, sac, liters_per_minute, bottle_size, bars))
+    return bars
