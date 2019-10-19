@@ -13,7 +13,7 @@ def minimum_gas(depth, bottle_size, change=NX_50_DEPTH, sac=DEFAULT_BOTTOM_SAC, 
     '''
     c = sac * 2
     a = avg_pressure(depth_to_ata(depth), depth_to_ata(change))
-    t = minutes_to_gas_change(depth, change=change)
+    t = minutes_to_gas_change(depth, change=change, ascent_speed=ascent_speed)
     total_liters = c * a * t
     bars_for_bottle = liters_to_bars(total_liters, bottle_size, round=True)
     print("Consuption: {}\nATA avg: {}\nTime of ascent: {}\nTotal liters: {}\nBars in bottle (size: {}): {}".format(c, a, t, total_liters, bottle_size, bars_for_bottle))

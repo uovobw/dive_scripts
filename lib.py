@@ -130,9 +130,9 @@ def total_volume(bottle_size, pressure=DEFAULT_BOTTLE_PRESSURE):
     '''returns the volume in liters of a tank of given size in liters and pressure in bar'''
     return bottle_size * pressure
 
-def minutes_to_gas_change(depth, change=NX_50_DEPTH):
+def minutes_to_gas_change(depth, change=NX_50_DEPTH, ascent_speed=DECO_ASCENT_SPEED):
     '''returns the total minutes necessary to calculate minimum gas between two depths'''
-    total_time = 1 + ascent_time(depth, change=change)
+    total_time = 1 + ascent_time(depth, change=change, ascent_speed=ascent_speed)
     return total_time
 
 def bottle_duration(consumption, pressure, empty_pressure=0):
