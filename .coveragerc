@@ -1,0 +1,6 @@
+[run]
+omit=
+    tests/*
+disable_warnings=trace-changed
+branch=True
+concurrency=thread
