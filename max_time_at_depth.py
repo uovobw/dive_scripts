@@ -19,9 +19,15 @@ if __name__ == "__main__":
         consumption_min = consumption_per_minute(depth, stats["volume"])
         available_bars = bottle_data["pressure"] - bottle_data["reserve"]
         minutes = available_bars / consumption_min
-        total_time.append({
-            "bottle": bottle_type,
-            "consumption_per_minute": consumption_min,
-            "minutes": minutes
-        })
-    print("Maximum time at depth: {}".format(math.floor(sum([x["minutes"] for x in total_time]))))
+        total_time.append(
+            {
+                "bottle": bottle_type,
+                "consumption_per_minute": consumption_min,
+                "minutes": minutes,
+            }
+        )
+    print(
+        "Maximum time at depth: {}".format(
+            math.floor(sum([x["minutes"] for x in total_time]))
+        )
+    )

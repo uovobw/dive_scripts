@@ -19,6 +19,12 @@ if __name__ == "__main__":
     cpm = consumption_per_minute(depth, bottle_size, sac=sac)
     cpm_5 = cpm * 5.0
     print("Consumption bar per 1 minute:  {:.1f} (rounded: {})".format(cpm, round(cpm)))
-    print("Consumption bar per 5 minute:  {:.1f} (rounded {})".format(cpm_5, round(cpm_5)))
-    print("Duration of bottle (to 30 bars):   {}".format(bottle_duration(cpm, pressure, empty_pressure=30))) 
+    print(
+        "Consumption bar per 5 minute:  {:.1f} (rounded {})".format(cpm_5, round(cpm_5))
+    )
+    print(
+        "Duration of bottle (to 30 bars):   {}".format(
+            bottle_duration(cpm, pressure, empty_pressure=30)
+        )
+    )
     print("Duration of bottle (to empty):   {}".format(bottle_duration(cpm, pressure)))

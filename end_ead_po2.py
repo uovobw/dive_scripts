@@ -25,5 +25,3 @@ if __name__ == "__main__":
         print("EAD: {}".format(ead))
     print("END: {}".format(end))
     print("Po2: {}".format(partial_pressure_o2))
-
-
