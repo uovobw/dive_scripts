@@ -82,7 +82,7 @@ def fraction_to_percentage(fraction):
 
 def avg_pressure(start, end):
     """returns average pressure from ATAstart to ATAend"""
-    return round((start + end) / 2, 1)
+    return round((start + end) / 2, 2)
 
 
 def depth_to_ata(depth):
