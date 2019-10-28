@@ -24,7 +24,7 @@ def minimum_gas(
     total_liters = c * a * t
     bars_for_bottle = liters_to_bars(total_liters, bottle_size, round=True)
     print(
-        "Consuption: {}\nATA avg: {}\nTime of ascent: {}\nTotal liters: {}\nBars in bottle (size: {}): {}".format(
+        "Consumption: {}\nATA avg: {}\nTime of ascent: {}\nTotal liters: {}\nBars in bottle (size: {}): {}".format(
             c, a, t, total_liters, bottle_size, bars_for_bottle
         )
     )
