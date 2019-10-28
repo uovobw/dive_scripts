@@ -20,6 +20,17 @@ of the various gas pressures, dive lenghts, consumptions and so on when planning
 of the matter at hand, my very limited and partial experience and my extremely poor programming skills the software
 does not even _consider_ doing decompression calculations.
 
+## Requirements
+
+You need to have python installed on the machine, then install the requirements with the
+```
+pip install -r requirements.txt
+```
+command and then run the various script with 
+```
+python <script_name>.py
+```
+
 ## Structure
 
 The main code, barring some horrendous python floating point operation errors, lives in the `lib.py` file that is
