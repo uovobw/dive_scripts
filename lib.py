@@ -128,18 +128,19 @@ def liters_to_bars(liters, bottle_size, round=False):
         return liters / bottle_size
 
 
-def consumption_per_minute(depth, bottle_size, sac=DEFAULT_BOTTOM_SAC):
+def consumption_per_minute(depth, bottle_size, sac=DEFAULT_BOTTOM_SAC, silent=True):
     """returns the consumption in bars/minute of a bottle of a given size for
     a given SAC"""
     sac = float(sac)
     ata = depth_to_ata(depth)
     liters_per_minute = ata * sac
     bars = liters_to_bars(liters_per_minute, bottle_size)
-    print(
-        "Depth: {}\nATA@Depth: {}\nLiters per minute @{}l/m {}\nBars/minute of bottle {}: {:.1f}".format(
-            depth, ata, sac, liters_per_minute, bottle_size, bars
+    if not silent:
+        print(
+            "Depth: {}\nATA@Depth: {}\nLiters per minute @{}l/m {}\nBars/minute of bottle {}: {:.1f}".format(
+                depth, ata, sac, liters_per_minute, bottle_size, bars
+            )
         )
-    )
     return bars
 
 
