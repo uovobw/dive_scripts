@@ -3,6 +3,10 @@ import sys
 import math
 
 BOTTLES = {
+    "m18": {"max_pressure": 232, "fill_pressure": 210, "volume": 18.0, "bottom": True},
+    "m15": {"max_pressure": 232, "fill_pressure": 210, "volume": 15.0, "bottom": True},
+    "m12": {"max_pressure": 232, "fill_pressure": 210, "volume": 12.0, "bottom": True},
+    "m10": {"max_pressure": 232, "fill_pressure": 210, "volume": 10.0, "bottom": True},
     "d20": {"max_pressure": 232, "fill_pressure": 210, "volume": 40.0, "bottom": True},
     "d18": {"max_pressure": 232, "fill_pressure": 210, "volume": 36.0, "bottom": True},
     "d16": {"max_pressure": 232, "fill_pressure": 210, "volume": 32.0, "bottom": True},
